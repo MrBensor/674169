@@ -1,0 +1,9 @@
+.advanced-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.advanced-container label {
+  cursor: pointer;
+}
