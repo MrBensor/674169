@@ -1,11 +1,7 @@
-/* CSS für den Tab 'Einstellungen' */
-#tab-settings {
-    background-color: #fdfdfd;
+/* Styles nur für Settings-Tab */
+#tab-settings{
+  padding:10px;
+  background: linear-gradient(180deg, rgba(35,16,66,0.03), rgba(0,0,0,0.02));
+  border-radius:10px;
 }
-#tab-settings label {
-    display: block;
-    margin: 8px 0;
-}
-#tab-settings input[type="checkbox"] {
-    margin-right: 6px;
-}
+#tab-settings label{ color: #efe9ff; font-weight:600; display:flex; align-items:center; gap:8px; }
