@@ -1,9 +1,12 @@
-.advanced-container {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+/* CSS für den Tab 'Erweitert' */
+#tab-advanced {
+    background-color: #fefefe;
 }
-
-.advanced-container label {
-  cursor: pointer;
+#tab-advanced code {
+    background-color: #eee;
+    display: block;
+    padding: 8px;
+    border-radius: 3px;
+    font-family: monospace;
+    margin-top: 10px;
 }
