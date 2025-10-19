@@ -1,45 +1,66 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <title>Draggable Window mit Tabs</title>
-    <link rel="stylesheet" href="css/main.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Violettes GUI — MrBensor</title>
+  <!-- Nur main.css eingebunden (alles andere wird dynamisch geladen) -->
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <!-- Hauptfenster -->
-    <div id="myWindow" class="window">
-        <!-- Titelleiste für Drag-Funktion -->
-        <div class="titlebar">Mein Fenster</div>
-        <!-- Tab-Leiste -->
-        <div class="tabs">
-            <button data-tab="general" class="tab active">Allgemein</button>
-            <button data-tab="settings" class="tab">Einstellungen</button>
-            <button data-tab="advanced" class="tab">Erweitert</button>
-        </div>
-        <!-- Inhaltsbereiche für jeden Tab -->
-        <div id="tab-general" class="tab-content active">
-            <h2>Allgemeine Einstellungen</h2>
-            <p>Konfiguriere die allgemeinen Einstellungen hier:</p>
-            <ul>
-                <li>Option 1</li>
-                <li>Option 2</li>
-                <li>Option 3</li>
-            </ul>
-        </div>
-        <div id="tab-settings" class="tab-content">
-            <h2>Benutzereinstellungen</h2>
-            <p>Aktiviere oder deaktiviere die folgenden Optionen:</p>
-            <label><input type="checkbox" id="optA"> Option A</label><br>
-            <label><input type="checkbox" id="optB"> Option B</label><br>
-            <label><input type="checkbox" id="optC"> Option C</label>
-        </div>
-        <div id="tab-advanced" class="tab-content">
-            <h2>Erweiterte Einstellungen</h2>
-            <p>Hier können erweiterte Skript-Optionen angezeigt werden:</p>
-            <code>console.log('Erweiterte Einstellungen geladen');</code>
-        </div>
+  <!-- Draggable Window -->
+  <div id="gui-window" class="window" aria-label="Draggable GUI">
+    <div id="window-header" class="titlebar" role="banner">
+      <div class="title-text">MrBensor — Dashboard</div>
+      <div class="title-actions">
+        <button id="close-btn" class="icon-btn" aria-label="Close">✕</button>
+      </div>
     </div>
-    <!-- Haupt-JavaScript -->
-    <script src="js/main.js"></script>
+
+    <div class="window-body">
+      <!-- Linke Tab-Leiste (vertical) -->
+      <nav class="sidebar" role="navigation" aria-label="Tabs">
+        <button class="tab-btn active" data-tab="aimbot">Aimbot</button>
+        <button class="tab-btn" data-tab="visuals">Visuals</button>
+        <button class="tab-btn" data-tab="misc">Misc</button>
+        <button class="tab-btn" data-tab="settings">Settings</button>
+      </nav>
+
+      <!-- Inhaltsbereich (Tab-Inhalte) -->
+      <main class="content" id="content-area" role="main">
+        <!-- Default-Inhalte; tab-spezifische CSS/JS werden beim Aktivieren geladen -->
+        <section id="tab-aimbot" class="tab-content" data-tabname="aimbot">
+          <h2>Aimbot</h2>
+          <p>Platz für Aimbot-Optionen (noch nicht geladen).</p>
+        </section>
+
+        <section id="tab-visuals" class="tab-content" data-tabname="visuals">
+          <h2>Visuals</h2>
+          <p>Platz für Visuals-Optionen (noch nicht geladen).</p>
+        </section>
+
+        <section id="tab-misc" class="tab-content" data-tabname="misc">
+          <h2>Misc</h2>
+          <p>Platz für Misc-Optionen (noch nicht geladen).</p>
+        </section>
+
+        <section id="tab-settings" class="tab-content" data-tabname="settings">
+          <h2>Settings</h2>
+          <p>Allgemeine Einstellungen:</p>
+          <label class="switch">
+            <input id="toggle-snow" type="checkbox" />
+            <span class="slider"></span>
+            Schneeflocken im GUI
+          </label>
+          <p class="muted">Schaltet die Schneeflocken-Animation innerhalb des Fensters ein/aus.</p>
+        </section>
+      </main>
+    </div>
+    <!-- Canvas für Effekte (wird von main.js verwaltet) -->
+    <canvas id="effect-canvas" class="effect-canvas" aria-hidden="true"></canvas>
+  </div>
+
+  <!-- Hauptlogik -->
+  <script src="js/main.js"></script>
 </body>
 </html>
