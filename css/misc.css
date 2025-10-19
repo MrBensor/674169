@@ -1,0 +1,6 @@
+/* Styles nur für Misc-Tab */
+#tab-misc{
+  padding:10px;
+  background: linear-gradient(180deg, rgba(58,26,100,0.03), rgba(0,0,0,0.02));
+  border-radius:10px;
+}
