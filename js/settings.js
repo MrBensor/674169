@@ -1,23 +1,23 @@
-import { showToast } from "./main.js";
+// JavaScript für den 'Einstellungen'-Tab
+console.log("settings.js geladen");
 
-export const html = `
-  <h2>Settings</h2>
-  <div class="settings-container">
-    <label><input type="checkbox" id="compactView"> Compact View</label>
-    <label><input type="checkbox" id="showHints"> Show Hints</label>
-  </div>
-`;
+// Beispiel: Checkbox-Events im Einstellungen-Tab
+var optA = document.getElementById('optA');
+var optB = document.getElementById('optB');
+var optC = document.getElementById('optC');
 
-export function init() {
-  const compactView = document.getElementById("compactView");
-  const showHints = document.getElementById("showHints");
-
-  compactView.addEventListener("change", e => {
-    document.getElementById("gui-window").style.transform = e.target.checked ? "scale(0.9)" : "scale(1)";
-    showToast(e.target.checked ? "Compact view on" : "Compact view off");
-  });
-
-  showHints.addEventListener("change", e => {
-    showToast(e.target.checked ? "Hints enabled" : "Hints disabled");
-  });
+if (optA) {
+    optA.addEventListener('change', function() {
+        console.log("Option A geändert: " + (this.checked ? "aktiviert" : "deaktiviert"));
+    });
+}
+if (optB) {
+    optB.addEventListener('change', function() {
+        console.log("Option B geändert: " + (this.checked ? "aktiviert" : "deaktiviert"));
+    });
+}
+if (optC) {
+    optC.addEventListener('change', function() {
+        console.log("Option C geändert: " + (this.checked ? "aktiviert" : "deaktiviert"));
+    });
 }
