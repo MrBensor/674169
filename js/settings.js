@@ -1,23 +1,22 @@
-// JavaScript für den 'Einstellungen'-Tab
-console.log("settings.js geladen");
+// settings.js — nur tab-spezifische Logik
+console.log('settings.js geladen');
+(function(){
+  const el = document.getElementById('tab-settings');
+  if(!el) return;
 
-// Beispiel: Checkbox-Events im Einstellungen-Tab
-var optA = document.getElementById('optA');
-var optB = document.getElementById('optB');
-var optC = document.getElementById('optC');
+  // Ensure the toggle input exists (it is in index.html)
+  const toggle = document.getElementById('toggle-snow');
+  if(toggle){
+    // set visual state from SnowController
+    toggle.checked = !!(window.SnowController && window.SnowController.isRunning && window.SnowController.isRunning());
+    toggle.addEventListener('change', function(){
+      if(this.checked) {
+        window.SnowController?.start();
+      } else {
+        window.SnowController?.stop();
+      }
+    });
+  }
 
-if (optA) {
-    optA.addEventListener('change', function() {
-        console.log("Option A geändert: " + (this.checked ? "aktiviert" : "deaktiviert"));
-    });
-}
-if (optB) {
-    optB.addEventListener('change', function() {
-        console.log("Option B geändert: " + (this.checked ? "aktiviert" : "deaktiviert"));
-    });
-}
-if (optC) {
-    optC.addEventListener('change', function() {
-        console.log("Option C geändert: " + (this.checked ? "aktiviert" : "deaktiviert"));
-    });
-}
+  // Additional settings can go here
+})();
