@@ -1,29 +1,45 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Violet GUI</title>
-  <link rel="stylesheet" href="css/main.css" />
+    <meta charset="UTF-8">
+    <title>Draggable Window mit Tabs</title>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-  <div id="gui-window">
-    <div id="window-header">
-      <span>Violet Control Panel</span>
-      <button id="close-btn">×</button>
+    <!-- Hauptfenster -->
+    <div id="myWindow" class="window">
+        <!-- Titelleiste für Drag-Funktion -->
+        <div class="titlebar">Mein Fenster</div>
+        <!-- Tab-Leiste -->
+        <div class="tabs">
+            <button data-tab="general" class="tab active">Allgemein</button>
+            <button data-tab="settings" class="tab">Einstellungen</button>
+            <button data-tab="advanced" class="tab">Erweitert</button>
+        </div>
+        <!-- Inhaltsbereiche für jeden Tab -->
+        <div id="tab-general" class="tab-content active">
+            <h2>Allgemeine Einstellungen</h2>
+            <p>Konfiguriere die allgemeinen Einstellungen hier:</p>
+            <ul>
+                <li>Option 1</li>
+                <li>Option 2</li>
+                <li>Option 3</li>
+            </ul>
+        </div>
+        <div id="tab-settings" class="tab-content">
+            <h2>Benutzereinstellungen</h2>
+            <p>Aktiviere oder deaktiviere die folgenden Optionen:</p>
+            <label><input type="checkbox" id="optA"> Option A</label><br>
+            <label><input type="checkbox" id="optB"> Option B</label><br>
+            <label><input type="checkbox" id="optC"> Option C</label>
+        </div>
+        <div id="tab-advanced" class="tab-content">
+            <h2>Erweiterte Einstellungen</h2>
+            <p>Hier können erweiterte Skript-Optionen angezeigt werden:</p>
+            <code>console.log('Erweiterte Einstellungen geladen');</code>
+        </div>
     </div>
-    <div id="window-body">
-      <div id="sidebar">
-        <button class="tab-btn active" data-tab="general">General</button>
-        <button class="tab-btn" data-tab="settings">Settings</button>
-        <button class="tab-btn" data-tab="advanced">Advanced</button>
-      </div>
-      <div id="content">
-        <!-- Tab-Inhalt wird dynamisch geladen -->
-      </div>
-    </div>
-  </div>
-
-  <script src="js/main.js"></script>
+    <!-- Haupt-JavaScript -->
+    <script src="js/main.js"></script>
 </body>
 </html>
