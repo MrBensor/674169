@@ -1,12 +1,8 @@
-/* CSS für den Tab 'Erweitert' */
-#tab-advanced {
-    background-color: #fefefe;
+/* Styles nur für Aimbot-Tab */
+#tab-aimbot{
+  padding:10px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.03));
+  border-radius:10px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
 }
-#tab-advanced code {
-    background-color: #eee;
-    display: block;
-    padding: 8px;
-    border-radius: 3px;
-    font-family: monospace;
-    margin-top: 10px;
-}
+#tab-aimbot p{ color: rgba(255,255,255,0.85); }
