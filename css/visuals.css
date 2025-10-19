@@ -1,0 +1,6 @@
+/* Styles nur für Visuals-Tab */
+#tab-visuals{
+  padding:10px;
+  background: linear-gradient(180deg, rgba(90,46,166,0.03), rgba(0,0,0,0.02));
+  border-radius:10px;
+}
