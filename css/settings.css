@@ -1,9 +1,11 @@
-.settings-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+/* CSS für den Tab 'Einstellungen' */
+#tab-settings {
+    background-color: #fdfdfd;
 }
-
-.settings-container label {
-  cursor: pointer;
+#tab-settings label {
+    display: block;
+    margin: 8px 0;
+}
+#tab-settings input[type="checkbox"] {
+    margin-right: 6px;
 }
