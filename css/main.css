@@ -1,65 +1,193 @@
-/* Haupt-CSS für Layout und allgemeines Styling */
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
-body {
-    font-family: Arial, sans-serif;
-    background-color: #ddd;
-}
-
-/* Fenster-Container */
-.window {
-    position: absolute;
-    top: 100px;
-    left: 100px;
-    width: 600px;
-    border: 1px solid #333;
-    background-color: #f0f0f0;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-    border-radius: 5px;
-    overflow: hidden;
+/* main.css — Basislayout, violettes Modern UI */
+:root{
+  --bg:#120017;
+  --window-bg: linear-gradient(180deg, #3b186e 0%, #2a0f4a 100%);
+  --accent:#5a2ea6;
+  --muted: rgba(255,255,255,0.65);
+  --glass: rgba(255,255,255,0.04);
+  --radius: 14px;
 }
 
-/* Titelleiste für Drag-Bereich */
-.titlebar {
-    cursor: move;
-    background-color: #444;
-    color: #fff;
-    padding: 8px 12px;
-    font-size: 16px;
-    font-weight: bold;
+/* Page background */
+html,body{
+  height:100%;
+  margin:0;
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  background: radial-gradient(circle at 10% 10%, rgba(90,46,166,0.12), transparent 10%),
+              linear-gradient(180deg,#0d0720 0%, #06020a 100%);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  color:#fff;
 }
 
-/* Tab-Leiste und Tabs */
-.tabs {
-    display: flex;
-    background-color: #eee;
-    border-bottom: 1px solid #ccc;
-}
-.tabs button {
-    background: none;
-    border: none;
-    margin: 0;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 14px;
-}
-.tabs button:hover {
-    background-color: #ddd;
-}
-.tabs button.active {
-    background-color: #fff;
-    border-bottom: 2px solid #444;
-    font-weight: bold;
+/* Window */
+.window{
+  position:absolute;
+  top:80px;
+  left:80px;
+  width:720px;
+  height:460px;
+  border-radius: var(--radius);
+  overflow:hidden;
+  background: var(--window-bg);
+  box-shadow:
+    0 8px 30px rgba(20,8,40,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.03),
+    0 2px 0 rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.04);
+  display:flex;
+  flex-direction:column;
+  user-select:none;
 }
 
-/* Inhaltsbereiche der Tabs */
-.tab-content {
-    display: none;
-    padding: 10px 15px;
+/* Titelleiste (Drag handle) */
+.titlebar{
+  height:56px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.05));
+  border-bottom: 1px solid rgba(255,255,255,0.02);
+  cursor: move;
 }
-.tab-content.active {
-    display: block;
+.title-text{
+  font-weight:600;
+  color: #f3ecff;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.6);
+  letter-spacing:0.2px;
+}
+.title-actions .icon-btn{
+  background:transparent;
+  border:0;
+  color: rgba(255,255,255,0.8);
+  font-size:16px;
+  cursor:pointer;
+  padding:6px;
+  border-radius:8px;
+}
+.title-actions .icon-btn:hover{
+  background: rgba(255,255,255,0.03);
+  color:var(--accent);
+}
+
+/* Body area with sidebar + content */
+.window-body{
+  display:flex;
+  flex:1;
+  min-height:0; /* important for flex + overflow */
+}
+
+/* Sidebar (left tabs) */
+.sidebar{
+  width:170px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04));
+  border-right:1px solid rgba(255,255,255,0.02);
+  padding:12px;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.tab-btn{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #e9e3ff;
+  text-align:left;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  transition: all 180ms ease;
+  box-shadow: 0 2px 6px rgba(18,0,34,0.25);
+}
+.tab-btn:hover{
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, rgba(90,46,166,0.12), rgba(58,26,100,0.06));
+}
+.tab-btn.active{
+  background: linear-gradient(90deg, rgba(90,46,166,0.18), rgba(90,46,166,0.08));
+  border-color: rgba(90,46,166,0.35);
+  box-shadow: 0 6px 18px rgba(90,46,166,0.12);
+}
+
+/* Content area */
+.content{
+  flex:1;
+  padding:16px 20px;
+  position:relative;
+  overflow:auto;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));
+}
+
+/* Tab content boxes */
+.tab-content{
+  display:none;
+  color:#f7f4ff;
+}
+.tab-content.active{
+  display:block;
+}
+
+/* Small helper styles */
+h2{ margin-top:0; color:#f7eaff; }
+p{ color:var(--muted); line-height:1.45; }
+.muted{ color: rgba(255,255,255,0.55); font-size:13px; }
+
+/* Toggle switch styling for settings */
+.switch{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:8px;
+  cursor:pointer;
+  user-select:none;
+}
+.switch input{ display:none; }
+.switch .slider{
+  width:46px;
+  height:24px;
+  background: rgba(255,255,255,0.12);
+  border-radius:999px;
+  position:relative;
+  transition: all 160ms ease;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+}
+.switch .slider::after{
+  content:'';
+  position:absolute;
+  top:3px;
+  left:3px;
+  width:18px;
+  height:18px;
+  background:#fff;
+  border-radius:50%;
+  transition: all 160ms ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+.switch input:checked + .slider{
+  background: linear-gradient(90deg, var(--accent), #7b4cf7);
+}
+.switch input:checked + .slider::after{
+  transform: translateX(22px);
+}
+
+/* Effect canvas styles (positioned over the content area) */
+.effect-canvas{
+  position:absolute;
+  pointer-events:none; /* don't block interactions */
+  top:56px; /* below titlebar */
+  left:0;
+  width:100%;
+  height: calc(100% - 56px);
+  z-index: 8;
+}
+
+/* Responsive tweaks */
+@media (max-width:800px){
+  .window{ width:92%; left:4%; top:40px; }
+  .sidebar{ width:130px; }
 }
